@@ -7,6 +7,12 @@
   "background": {
       "page": "background.html"
    },
+   "content_scripts": [
+       {
+           "matches": ["http://zajellb.najah.edu/servlet/materials","http://zajellb.najah.edu/servlet/UniCurricula"],
+           "js": ["jquery.js","content.js"]
+       }
+   ],
   "browser_action": {
     "default_title":"Click here!"
   },
