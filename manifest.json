@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+
+  "name": "native extension",
+  "description": "This extension shows a Google Image search result for the current page",
+  "version": "1.0",
+  "background": {
+      "page": "background.html"
+   },
+  "browser_action": {
+    "default_title":"Click here!"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "webRequest",
+    "webRequestBlocking",
+     "http://*/*", "https://*/*",
+     "storage",
+     "alarms",
+     "notifications"
+  ]
+
+}
