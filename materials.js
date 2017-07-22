@@ -402,7 +402,7 @@ for(var i=0;i<copymsg.length;i++){
 				
 					
 					if(colorIndex>12)colorIndex=0;
-                    if(summer)){
+                    if(summer){
 					if(timeFromTo=="11-12")colorIndex--;
                     }
 					color=colors[colorIndex];
