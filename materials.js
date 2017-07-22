@@ -402,7 +402,7 @@ for(var i=0;i<copymsg.length;i++){
 				
 					
 					if(colorIndex>12)colorIndex=0;
-                    if(isSummer()){
+                    if(summer)){
 					if(timeFromTo=="11-12")colorIndex--;
                     }
 					color=colors[colorIndex];
@@ -529,7 +529,7 @@ function addCourse(courseInDays,startHour,interval,columNumber,courseName,roomNu
 }
 function recordthis( teacher,time, course,days,roomNumber){
 	$(record).append('<tr><td><input type="button" class="delete" value="&#x62D;&#x630;&#x641;"></td><td>'+course+'</td><td>'+time+'</td><td>'+teacher+'</td><td style="display:none">'+days+'</td><td style="display:none">'+roomNumber+'</td></tr>');
-    if(isSummer()){
+    if(summer){
 	if(time=="11-12")
 	$(record).find("tr").last().hide();
     }
@@ -574,7 +574,7 @@ function lastJob(){
 		if(parseFloat(hours)==3){
 		
 		//days=[sunday,monday,tuseday,thursda,wednsday];
-        if(isSummer()){
+        if(summer){
 		days=["اثنين","ثلاث","اربعاء","احد","خميس"];
         }
 	
@@ -586,7 +586,7 @@ function lastJob(){
 			colorIndex++;
 			addCourse(days,startTime,duration,sizeDuration,nameOfCourse,roomNumber);
 			recordthis(nameOfTeacher,timeFromTo,nameOfCourse,days,roomNumber);
-            if(isSummer()){
+            if(summer){
 			if(parseFloat(hours)==3&&!isContradict(added,9,2)){
 				addCourse(added,9,1,2,nameOfCourse,roomNumber);
 				recordthis(nameOfTeacher,"11-12",nameOfCourse,added,roomNumber);
