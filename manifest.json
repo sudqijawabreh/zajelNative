@@ -9,8 +9,12 @@
    },
    "content_scripts": [
        {
-           "matches": ["http://zajellb.najah.edu/servlet/materials","http://zajellb.najah.edu/servlet/UniCurricula"],
-           "js": ["jquery.js","content.js"]
+           "matches": ["http://zajellb.najah.edu/servlet/UniCurricula"],
+           "js": ["jquery.js","curicula.js"]
+       },
+       {
+           "matches": ["http://zajellb.najah.edu/servlet/materials"],
+           "js": ["jquery.js","materials.js","html2canvas.js"]
        }
    ],
   "browser_action": {
