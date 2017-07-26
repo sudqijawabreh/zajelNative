@@ -2855,6 +2855,9 @@ _html2canvas.Renderer.Canvas = function(options) {
         newCanvas.width = Math.ceil(bounds.width);
         newCanvas.height = Math.ceil(bounds.height);
         ctx = newCanvas.getContext("2d");
+        // ctx.fillstyle="white";
+        // ctx.fillRect(0,0,newCanvas.width,newCanvas.height);
+        // ctx.style=s;
 
         ctx.drawImage(canvas, bounds.left, bounds.top, bounds.width, bounds.height, 0, 0, bounds.width, bounds.height);
         canvas = null;

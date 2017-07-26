@@ -1,4 +1,5 @@
 var finished=1;
+var div;
 var clicked=0;
 var summer=false;
  copymsg=[];
@@ -356,8 +357,18 @@ function layout(){
 	returnPlan();
 	setTableUp();
 	setRecordTable();
-	attachTable();
-	attachRecordTable();
+	div=document.createElement("div")
+	div.bgColor="white";
+	div.id="picture";
+	$(div).width(925);
+	$(div).append(record);
+	$(div).append(table);
+	// $(div).style("width","400px")
+	$('body').children('center').find('table').first().after(div);
+	// $(div).append(record);
+	// $(div).append(table);
+	//attachTable();
+	//attachRecordTable();
 	
 
 
@@ -665,9 +676,30 @@ $(record).on('click','.delete',function(){
 
 	});
 	$(table).on('click',function(){
-	html2canvas(table, {
+	$(div).width($(record).width()+670);
+	$(div).css("background-color","white");
+	var selected = 0;
+		$('#id').dialog({
+			buttons: {
+				"First": function () {
+					selected = 1;
+				},
+				"Second": function () {
+					selected = 2;
+				},
+				"Third": function () {
+					selected = 3;
+				},
+				"Fourth": function () {
+					selected = 4;
+				}
+			}
+		});
+	html2canvas(picture, {
 		onrendered: function (canvas) {
 			var image = canvas.toDataURL();
+			window.open(image);
+			return;
 			var imageURI = (image.substr(22, image.length));
 			$.post("http://data-uri-to-img-url.herokuapp.com/images.json",
 				{
