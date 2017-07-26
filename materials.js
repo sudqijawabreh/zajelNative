@@ -678,23 +678,7 @@ $(record).on('click','.delete',function(){
 	$(table).on('click',function(){
 	$(div).width($(record).width()+670);
 	$(div).css("background-color","white");
-	var selected = 0;
-		$('#id').dialog({
-			buttons: {
-				"First": function () {
-					selected = 1;
-				},
-				"Second": function () {
-					selected = 2;
-				},
-				"Third": function () {
-					selected = 3;
-				},
-				"Fourth": function () {
-					selected = 4;
-				}
-			}
-		});
+	
 	html2canvas(picture, {
 		onrendered: function (canvas) {
 			var image = canvas.toDataURL();
