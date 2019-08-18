@@ -681,8 +681,12 @@ $(record).on('click','.delete',function(){
 	
 	html2canvas(picture, {
 		onrendered: function (canvas) {
-			var image = canvas.toDataURL();
-			window.open(image);
+			var data = canvas.toDataURL().replace("image/png", "image/octet-stream");
+			 var link = document.createElement('a');
+			link.download = 'table.png';
+			link.href = data;
+			link.click();
+
 			return;
 			var imageURI = (image.substr(22, image.length));
 			$.post("http://data-uri-to-img-url.herokuapp.com/images.json",
