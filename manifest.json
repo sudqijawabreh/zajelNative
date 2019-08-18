@@ -3,7 +3,7 @@
 
   "name": "Zajel TimeTable",
   "description": "Zajel Timetable is an extension that is designed to help people plan there table",
-  "version": "1.27.2",
+  "version": "1.28.0",
   "icons": { "16": "icons/icon16.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png" },
