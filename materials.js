@@ -9,14 +9,14 @@ var recPlan="";
  colorIndex=0;
  color="";
 var text =decodeURIComponent('%D9%8A%D9%88%D8%AC%D8%AF%20%D8%AA%D8%B9%D8%A7%D8%B1%D8%B6%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B9%D9%8A%D8%AF');
-var sunday=decodeURIComponent("%D8%A7%D8%AD%D8%AF");
+var sunday=("الأحد");
+var monday=("الإثنين");
+var tuseday=("الثلاثاء");
+var wednsday=("الأربعاء");
+var thursday=("الخميس");
+var saturday=("السبت");
 var mondayShort=decodeURIComponent("%D8%A7%D8%AB%D9%86");
-var tuseday=decodeURIComponent("%D8%AB%D9%84%D8%A7%D8%AB");
-var wednsdayShort=decodeURIComponent("%D8%A7%D8%B1%D8%A8%D8%B9")
-var thursday=decodeURIComponent("%D8%AE%D9%85%D9%8A%D8%B3");
-var saturday=decodeURIComponent("%D8%B3%D8%A8%D8%AA");
-var monday=decodeURIComponent("%D8%A7%D8%AB%D9%86%D9%8A%D9%86");
-var wednsday=decodeURIComponent("%D8%A7%D8%B1%D8%A8%D8%B9%D8%A7%D8%A1");
+var wednsdayShort=decodeURIComponent("%D8%A7%D8%B1%D8%A8%D8%B9");
 var backToPlan=decodeURIComponent("%D8%A7%D9%84%D8%B1%D8%AC%D9%88%D8%B9%20%D8%A7%D9%84%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20");
 var hideTableText=decodeURIComponent("%D8%A7%D8%AE%D9%81%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AC%D8%AF%D9%88%D9%84%0A");
 var showTableText=decodeURIComponent("%D8%A7%D8%B8%D9%87%D8%A7%D8%B1%20%D8%A7%D9%84%D8%AC%D8%AF%D9%88%D9%84");
@@ -440,21 +440,35 @@ for(var i=0;i<copymsg.length;i++){
 	 
 }
 
+function RemoveAlephHamza(day)
+{
+	 return day.replace('أ','ا').replace('إ','ا');
+}
+
  function dayIndex(day){
-		
-		
-		switch(day){
-			case sunday :return 1;
-			case mondayShort:return 2;
-			case tuseday:return 3;
-			case wednsdayShort:return 4;
-			case thursday:return 5;
-			case saturday:return 6;	
-			case wednsday:return 4;
-			case monday:return 2;
-		}
-	
- 
+	 var plainDay = RemoveAlephHamza(day);
+
+	 if (RemoveAlephHamza(sunday).includes(plainDay)){
+		 return 1;
+	 }
+	 else if (RemoveAlephHamza(monday).includes(plainDay)){
+		 return 2;
+	 }
+	 else if (RemoveAlephHamza(tuseday).includes(plainDay)){
+		 return 3;
+	 }
+	 else if (RemoveAlephHamza(wednsday).includes(plainDay)){
+		 return 4;
+	 }
+	 else if (RemoveAlephHamza(thursday).includes(plainDay)){
+		 return 4;
+	 }
+	 else if (RemoveAlephHamza(saturday).includes(plainDay)){
+		 return 6;
+	 }
+	 else {
+		 return 0;
+	 }
  }
 
 	
@@ -463,13 +477,15 @@ for(var i=0;i<copymsg.length;i++){
 function isContradict(courseInDays,startHour,columNumber){
 	for(var i=0;i<courseInDays.length;i++){
 		var index=dayIndex(courseInDays[i]);
+		if (index == 0 )
+		{
+			alert("يوجد مشكلة في اسماء الايام");
+		}
 
 		for(var j=startHour;j<startHour+columNumber;j++)
 			if (sechdule[index][j]==1)return 1;
 
-	return 0;
-
-
+		return 0;
 	}
 
 
