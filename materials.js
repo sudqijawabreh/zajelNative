@@ -704,63 +704,6 @@ $(record).on('click','.delete',function(){
 			link.click();
 
 			return;
-			var imageURI = (image.substr(22, image.length));
-			$.post("http://data-uri-to-img-url.herokuapp.com/images.json",
-				{
-					"image[data_uri]": imageURI,
-				},
-				function (data, status) {
-					console.log(status);
-					const APP_ID = 154620008433771;
-					var chrome = window.chrome;
-					currentURL = data.url;
-					quote = "";
-					var shareDialogURL = 'https://www.facebook.com/sharer/sharer.php?';
-					shareDialogURL = shareDialogURL.concat('app_id=', APP_ID);
-					shareDialogURL = shareDialogURL.concat('&u=', currentURL);
-					if (quote) {
-						shareDialogURL = shareDialogURL.concat('&quote=', quote);
-					}
-
-					var windowSpecs = 'toolbar=no, location=no, status=no, menubar=no,' +
-						'scrollbars=yes, resizable=yes, width=600, height=400';
-					window.open(shareDialogURL, 'fbShareWindow', windowSpecs);
-
-				});
-	// 	    authToken="EAACMoEatiGsBAAdNGaFmUnrsgZCwDAO7VXNSx9zEcWjjRKls4L9WupUUmJFlcC2bR7OAYLIenHkF7ah3RSpUd1q14lGRxfmoogWUECv89okna4M7e4QV5swsACUvMGS2QcvUpdkZBxRi7TF9ADanUAObZAdAXJS0AtrPgNNMhT7W9S0dnWbiXYec7dTsdkZD"
-	// 		var imageData = canvas.toDataURL("image/png");
-	// 		try {
-	// 			blob = dataURItoBlob(imageData);
-	// 		} catch (e) {
-	// 			console.log(e);
-	// 		}
-	// 		var fd = new FormData();
-	// 		fd.append("access_token", authToken);
-	// 		fd.append("source", blob);
-	// 		fd.append("message", "Photo Text");
-	// 		try {
-	// 			$.ajax({
-	// 				url: "https://graph.facebook.com/me/photos?access_token=" + authToken,
-	// 				type: "POST",
-	// 				data: fd,
-	// 				processData: false,
-	// 				contentType: false,
-	// 				cache: false,
-	// 				success: function (data) {
-	// 					console.log("success " + data);
-	// 					$("#poster").html("Posted Canvas Successfully");
-	// 				},
-	// 				error: function (shr, status, data) {
-	// 					console.log("error " + data + " Status " + shr.status);
-	// 				},
-	// 				complete: function () {
-	// 					console.log("Posted to facebook");
-	// 				}
-	// 			});
-
-	// 		} catch (e) {
-	// 			console.log(e);
-	// 		}
  	  }
 });
 

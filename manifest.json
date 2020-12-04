@@ -31,14 +31,7 @@
       "default_title": "click to open curricula page"
   },
   "permissions": [
-    "activeTab",
-    "tabs",
-    "webRequest",
-    "webRequestBlocking",
-     "http://*/*", "https://*/*",
-     "storage",
-     "alarms",
-     "notifications"
+    "activeTab"
   ]
 
 }
