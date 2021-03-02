@@ -7,7 +7,17 @@ var sendMsgToTab=function(tab,msg) {
                 chrome.tabs.sendMessage(tab.id, msg, function(response){});
 }
 chrome.browserAction.onClicked.addListener(function(){
-    chrome.tabs.create({ url: "http://zajellb.najah.edu/servlet/UniCurricula" });
+    //chrome.tabs.create({ url: "http://zajellb.najah.edu/servlet/UniCurricula" });
+    chrome.notifications.create(
+        "name-for-notification",
+        {
+          type: "basic",
+          iconUrl: "zajelLogo.png",
+          title: "This is a notification",
+          message: "hello there!",
+        },
+        function () {}
+      );
 });
 chrome.runtime.onMessage.addListener(
         function(msg, sender, sendResponse) {
@@ -49,5 +59,25 @@ chrome.runtime.onMessage.addListener(
             else if(msg.action=='savePlan'){
                 plan=msg.planUrl;
                 isNotClicked=0;
+            }
+            else if(msg.action == "notify"){
+                var status = ""
+                if(msg.value.includes("مصاب"))
+                    noMessage = 'مصاب'
+                else if (msg.value.includes('سليم'))
+                    noMessage = 'سليم'
+                else 
+                    return;
+
+                chrome.notifications.create(
+                    "name-for-notification" + (""+Math.random())[0],
+                    {
+                      type: "basic",
+                      iconUrl: "zajelLogo.png",
+                      title: "This is a notification" + (Math.random + "")[0],
+                      message: noMessage,
+                    },
+                    function () {}
+                  );
             }
         });
