@@ -1,4 +1,6 @@
 {
+"update_url": "https://clients2.google.com/service/update2/crx",
+
   "manifest_version": 2,
 
   "name": "Zajel TimeTable",
@@ -7,7 +9,6 @@
   "icons": { "16": "icons/icon16.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png" },
-"content_security_policy": "script-src 'self' https://connect.facebook.net; object-src 'self'",
   "background": {
       "page": "background.html"
    },
@@ -19,26 +20,14 @@
        {
            "matches": ["http://zajellb.najah.edu/servlet/materials"],
            "js": ["jquery.js","materials.js","html2canvas.js"]
-       },
-    {
-        "matches": ["https://www.facebook.com/connect/login_success.html"],
-        "js": ["interrupt.js"]
-    }
-
+       }
    ],
   "browser_action": {
       "default_icon": "zajelLogo.png",
       "default_title": "click to open curricula page"
   },
   "permissions": [
-    "activeTab",
-    "tabs",
-    "webRequest",
-    "webRequestBlocking",
-     "http://*/*", "https://*/*",
-     "storage",
-     "alarms",
-     "notifications"
+    "activeTab"
   ]
 
 }
